@@ -83,7 +83,7 @@ namespace singly_linked_list
         public bool Search(int nim, ref Node previous, ref Node current)
         {
             previous = current;
-            while ((current != null) && (nim >= current.noMhs))
+            while ((current != null) && (nim != current.noMhs))
             {
                 previous = current;
                 current = current.next;
@@ -94,7 +94,7 @@ namespace singly_linked_list
                 return (true);
         }
 
-        }
+    }
 
     }
 
