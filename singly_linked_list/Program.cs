@@ -93,10 +93,32 @@ namespace singly_linked_list
             else
                 return (true);
         }
-
+        //Method untuk Traverse/mengunjungi dan membaca isi list
+        public void traverse()
+        {
+            if (listEmpty())
+                Console.WriteLine("\nList kosong. \n");
+            else
+            {
+                Console.WriteLine("\nData didalam list adalah : \n");
+                Node currentNode;
+                for (currentNode = START; currentNode != null; currentNode = currentNode.next)
+                    Console.Write(currentNode.noMhs + " " + currentNode.nama + "\n");
+                Console.WriteLine();
+            }
+        }
+        public bool listEmpty()
+        {
+            if (START == null)
+                return true;
+            else
+                return false;
+        }
     }
+}
+ 
 
-    }
+    
 
 
 
