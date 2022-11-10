@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -50,7 +52,7 @@ namespace singly_linked_list
             previous = START;
             current = START;
 
-            while((current != null) && (nim >= current.noMhs))
+            while ((current != null) && (nim >= current.noMhs))
             {
                 if (nim == current.noMhs)
                 {
@@ -60,15 +62,51 @@ namespace singly_linked_list
                 previous = current;
                 current = current.next;
             }
+            //Node baru akan ditempatkan diantara previous dan current
+            nodeBaru.next = current;
+            previous.next = nodeBaru;
+        }
+        //Method untuk menghapus node tertentu didalam list
+        public bool delNode(int nim)
+        {
+            Node previous, current;
+            previous = current = null;
+            //check apakah node yang dimaksud ada di dalam list atau tidak
+            if (Search(nim, ref previous, ref current) == false)
+                return false;
+            previous.next = current.next;
+            if (current == START)
+                START = START.next;
+            return true;
+        }
+        //Method untuk meng-check apakah node yang dimaksud ada didalam list atau tidak
+        public bool Search(int nim, ref Node previous, ref Node current)
+        {
+            previous = current;
+            while ((current != null) && (nim >= current.noMhs))
+            {
+                previous = current;
+                current = current.next;
+            }
+            if (current == null)
+                return (false);
+            else
+                return (true);
+        }
 
         }
+
     }
+
+
+
     internal class program
     {
         static void Main(string[] args)
         {
         }
     }
-}
+
+
 
 
